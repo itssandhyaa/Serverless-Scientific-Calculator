@@ -146,13 +146,13 @@ To set up and run the application locally, follow these steps:
    To Deploy the app in AWS Amplify.
      1. Go to **AWS Amplify Console**
      2. Select **Host a Web App**
-   3. Connect your **GitHub Repository**
-   4. Choose **branch → Deploy**
-   5. Amplify will:
-     - Build frontend
-     - Create S3 bucket
-     - Deploy your site
-     - Provide live URL
+     3. Connect your **GitHub Repository**
+     4. Choose **branch → Deploy**
+     5. Amplify will:
+       - Build frontend
+       - Create S3 bucket
+       - Deploy your site
+       - Provide live URL
 
 
 ## 📸 Screenshots
