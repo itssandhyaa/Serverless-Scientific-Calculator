@@ -82,30 +82,30 @@ To set up and run the application locally, follow these steps:
    ```
 3. **Frontend Setup:**
 
-  Just open **`index.html`** in the browser to run locally.  
+ Just open **`index.html`** in the browser to run locally.  
 
 4. **Backend Setup (Lambda + API Gateway):**
+ To create the lambda function and API Gateway for the main backend code.
+   1. Go to **AWS Lambda → Create Function**
+   2. Upload your backend code
+   3. Lambda permissions for DynamoDB (if using history)
+   4. Create **API Gateway REST API**
+   5. Connect Lambda to the POST/GET routes
+   6. Deploy the API
+   7. Copy the API Gateway URL and update in script.js:
 
-  1. Go to **AWS Lambda → Create Function**
-  2. Upload your backend code
-  3. Lambda permissions for DynamoDB (if using history)
-  4. Create **API Gateway REST API**
-  5. Connect Lambda to the POST/GET routes
-  6. Deploy the API
-  7. Copy the API Gateway URL and update in script.js:
-
-  ```javascript
-  // Replace the YOUR_API_GATEWAY_URL with your actual Invoke URL from your AWS API Gateway
-  const API_URL = "YOUR_API_GATEWAY_URL";
-  ```
+    ```javascript
+    // Replace the YOUR_API_GATEWAY_URL with your actual Invoke URL from your AWS API Gateway
+    const API_URL = "YOUR_API_GATEWAY_URL";
+    ```
 
 5.  **Create DynamoDB Table:**
-
- 5.1 Go to **AWS DynamoDB → Create table**
- 5.2 Table name: **CalculatorHistory** // Write your own table name
- 5.3 Partition key: **id (String)**
- 5.4 Keep other settings as default
- 5.5 Click **Create**
+ To create DynamoDB table to store the results, execution time and date. 
+   1. Go to **AWS DynamoDB → Create table**
+   2. Table name: **CalculatorHistory** // Write your own table name
+   3. Partition key: **id (String)**
+   4. Keep other settings as default
+   5. Click **Create**
 
 6. **Setup IAM permissions:**
 
@@ -116,39 +116,40 @@ To set up and run the application locally, follow these steps:
    4. Add the JSON code:
 
    ```json
-  {
-   "type": "inline",
-   "name": "CalcHistoryDynamoDBAccess",
-    "Version": "2012-10-17",
-   "Statement": [
-     {
-        "Sid": "CalcHistoryDynamoDBAccess",
-        "Effect": "Allow",
-        "Action": [
-            "dynamodb:PutItem",
-            "dynamodb:DeleteItem",
-            "dynamodb:GetItem",
-            "dynamodb:Scan",
-            "dynamodb:Query",
-            "dynamodb:UpdateItem"
-        ],
-        "Resource": "YOUR-TABLE-ARN" 
-     }
-    ]
-  }
-  ``` 
+   {
+      "type": "inline",
+      "name": "CalcHistoryDynamoDBAccess",
+      "Version": "2012-10-17",
+      "Statement": 
+      [
+        {
+           "Sid": "CalcHistoryDynamoDBAccess",
+           "Effect": "Allow",
+           "Action": [
+                       "dynamodb:PutItem",
+                       "dynamodb:DeleteItem",
+                       "dynamodb:GetItem",
+                       "dynamodb:Scan",
+                       "dynamodb:Query",
+                       "dynamodb:UpdateItem"
+                     ],
+            "Resource": "YOUR-TABLE-ARN" 
+        }
+      ]
+    }
+   ``` 
 
 7. **Deploying With AWS Amplify**
-
- 1. Go to **AWS Amplify Console**
- 2. Select **Host a Web App**
- 3. Connect your **GitHub Repository**
- 4. Choose **branch → Deploy**
- 5. Amplify will:
- - Build frontend
- - Create S3 bucket
- - Deploy your site
- - Provide live URL
+ To Deploy the app in AWS Amplify.
+   1. Go to **AWS Amplify Console**
+   2. Select **Host a Web App**
+   3. Connect your **GitHub Repository**
+   4. Choose **branch → Deploy**
+   5. Amplify will:
+     - Build frontend
+     - Create S3 bucket
+     - Deploy your site
+     - Provide live URL
 
 
 ## 📸 Screenshots
