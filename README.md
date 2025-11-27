@@ -87,13 +87,13 @@ To set up and run the application locally, follow these steps:
 4. **Backend Setup (Lambda + API Gateway):**
 
  To create the lambda function and API Gateway for the main backend code.
-   i. Go to **AWS Lambda → Create Function**
-   ii. Upload your backend code
-   iii. Lambda permissions for DynamoDB (if using history)
-   iv. Create **API Gateway REST API**
-   v. Connect Lambda to the POST/GET routes
-   vi. Deploy the API
-   vii. Copy the API Gateway URL and update in script.js:
+   1. Go to **AWS Lambda → Create Function**
+   2. Upload your backend code
+   3. Lambda permissions for DynamoDB (if using history)
+   4. Create **API Gateway REST API**
+   5. Connect Lambda to the POST/GET routes
+   6. Deploy the API
+   7. Copy the API Gateway URL and update in script.js:
 
     ```javascript
     // Replace the YOUR_API_GATEWAY_URL with your actual Invoke URL from your AWS API Gateway
@@ -103,19 +103,19 @@ To set up and run the application locally, follow these steps:
 5.  **Create DynamoDB Table:**
 
  To create DynamoDB table to store the results, execution time and date. 
-   i. Go to **AWS DynamoDB → Create table**
-   ii. Table name: **CalculatorHistory** // Write your own table name
-   iii. Partition key: **id (String)**
-   iv. Keep other settings as default
-   v. Click **Create**
+   1. Go to **AWS DynamoDB → Create table**
+   2. Table name: **CalculatorHistory** // Write your own table name
+   3. Partition key: **id (String)**
+   4. Keep other settings as default
+   5. Click **Create**
 
 6. **Setup IAM permissions:**
 
  Your Lambda function needs permission to read and write to DynamoDB.
-   i. Go to **Lambda Function → Configuration**
-   ii. Go to permissions and click  the **role attached to your Lambda function**.
-   iii. Click **Add permissions → create inline policy**.
-   iv. Add the JSON code:
+   1. Go to **Lambda Function → Configuration**
+   2. Go to permissions and click  the **role attached to your Lambda function**.
+   3. Click **Add permissions → create inline policy**.
+   4. Add the JSON code:
 
    ```json
    {
