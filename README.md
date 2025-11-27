@@ -86,14 +86,14 @@ To set up and run the application locally, follow these steps:
 
 4. **Backend Setup (Lambda + API Gateway):**
 
- To create the lambda function and API Gateway for the main backend code.
-   1. Go to **AWS Lambda → Create Function**
-   2. Upload your backend code
-   3. Lambda permissions for DynamoDB (if using history)
-   4. Create **API Gateway REST API**
-   5. Connect Lambda to the POST/GET routes
-   6. Deploy the API
-   7. Copy the API Gateway URL and update in script.js:
+   To create the lambda function and API Gateway for the main backend code.
+     1. Go to **AWS Lambda → Create Function**
+     2. Upload your backend code
+     3. Lambda permissions for DynamoDB (if using history)
+     4. Create **API Gateway REST API**
+     5. Connect Lambda to the POST/GET routes
+     6. Deploy the API
+     7. Copy the API Gateway URL and update in script.js:
 
     ```javascript
     // Replace the YOUR_API_GATEWAY_URL with your actual Invoke URL from your AWS API Gateway
@@ -102,29 +102,29 @@ To set up and run the application locally, follow these steps:
 
 5.  **Create DynamoDB Table:**
 
- To create DynamoDB table to store the results, execution time and date. 
-   1. Go to **AWS DynamoDB → Create table**
-   2. Table name: **CalculatorHistory** // Write your own table name
-   3. Partition key: **id (String)**
-   4. Keep other settings as default
-   5. Click **Create**
+   To create DynamoDB table to store the results, execution time and date. 
+     1. Go to **AWS DynamoDB → Create table**
+     2. Table name: **CalculatorHistory** // Write your own table name
+     3. Partition key: **id (String)**
+     4. Keep other settings as default
+     5 . Click **Create**
 
 6. **Setup IAM permissions:**
 
- Your Lambda function needs permission to read and write to DynamoDB.
-   1. Go to **Lambda Function → Configuration**
-   2. Go to permissions and click  the **role attached to your Lambda function**.
-   3. Click **Add permissions → create inline policy**.
-   4. Add the JSON code:
+   Your Lambda function needs permission to read and write to DynamoDB.
+     1. Go to **Lambda Function → Configuration**
+     2. Go to permissions and click  the **role attached to your Lambda function**.
+     3. Click **Add permissions → create inline policy**.
+     4. Add the JSON code:
 
-   ```json
-   {
-      "type": "inline",
-      "name": "CalcHistoryDynamoDBAccess",
-      "Version": "2012-10-17",
-      "Statement": 
-      [
-        {
+     ```json
+     {
+       "type": "inline",
+       "name": "CalcHistoryDynamoDBAccess",
+       "Version": "2012-10-17",
+       "Statement": 
+       [
+         {
            "Sid": "CalcHistoryDynamoDBAccess",
            "Effect": "Allow",
            "Action": [
@@ -136,10 +136,10 @@ To set up and run the application locally, follow these steps:
                        "dynamodb:UpdateItem"
                      ],
             "Resource": "YOUR-TABLE-ARN" 
-        }
-      ]
-    }
-   ``` 
+           }
+         ]
+       }
+     ``` 
 
 7. **Deploying With AWS Amplify**
 
