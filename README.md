@@ -187,7 +187,23 @@ This project is open source under the MIT License.
 
    
 
-
+5. Create DynamoDB Table:
+   
+   To create DynamoDB table to store the results, execution time and date.
+   
+   i. Go to **AWS DynamoDB** → **Create table**
+   
+   ii. Table name: **CalculatorHistory** // Write your own table name
+   
+   iii. Partition key: **id** (String)
+   
+   iv. Keep other settings as default
+   
+   v. Click **Create**
+   
+6. Setup IAM permissions:
+   
+   Your Lambda function needs permission to read and write to DynamoDB.
 
 
 
