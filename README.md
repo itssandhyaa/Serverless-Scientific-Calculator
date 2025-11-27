@@ -85,6 +85,7 @@ To set up and run the application locally, follow these steps:
  Just open **`index.html`** in the browser to run locally.  
 
 4. **Backend Setup (Lambda + API Gateway):**
+
  To create the lambda function and API Gateway for the main backend code.
    1. Go to **AWS Lambda → Create Function**
    2. Upload your backend code
@@ -100,6 +101,7 @@ To set up and run the application locally, follow these steps:
     ```
 
 5.  **Create DynamoDB Table:**
+
  To create DynamoDB table to store the results, execution time and date. 
    1. Go to **AWS DynamoDB → Create table**
    2. Table name: **CalculatorHistory** // Write your own table name
@@ -140,6 +142,7 @@ To set up and run the application locally, follow these steps:
    ``` 
 
 7. **Deploying With AWS Amplify**
+
  To Deploy the app in AWS Amplify.
    1. Go to **AWS Amplify Console**
    2. Select **Host a Web App**
