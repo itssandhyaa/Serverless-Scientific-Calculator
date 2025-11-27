@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Scientific Calculs</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="calc">
+ <section class="screen">
+    <div id="calculator">
+     <!-- Expression input -->
+      <!--input type="text" id="display" placeholder="Enter expression...">
+      <div id="display" class="display" contenteditable="true"></div-->
+        <div id="display" class="display" contenteditable="true"></div>
+
+
+     <!-- Result output (read-only) -->
+     <input type="text" id="resultBox" placeholder="Result will appear here" readonly>
+    </div>
+    <div class="mini">
+    <div id="status">Ready</div>
+     <div class="angle">
+     <!-- Mode dropdown -->
+    <span class="chip" id="modeContainer">
+    <span id="modeBtn">Mode: DEG ▼</span>
+      <div id="modeMenu" class="hidden">
+        <label class="option">
+          <input type="radio" name="angleMode" value="DEG" checked> Degrees
+        </label>
+        <label class="option">
+          <input type="radio" name="angleMode" value="RAD"> Radians
+        </label>
+      </div>
+    </span>
+    <!-- Other chips -->
+    <span class="chip">Ans: <span id="ans">0</span></span>
+    <span class="chip">History: <span id="histSize">0</span></span>
+  </div>
+ </div>
+ </section>
+ <section class="help">
+      <h2>How to use</h2>
+      <p>Type or click buttons. Supported: <em>+ − × ÷ ^ ( )</em>, factorial <em>!</em>, percent <em>%</em>, constants <em>pi</em>, <em>e</em>, and functions: <em>sin, cos, tan, asin, acos, atan, ln, log, sqrt, abs, floor, ceil, round</em>.</p>
+      <ul>
+        <li>Toggle degrees/radians with the <span class="kbd">Mode</span> chip.</li>
+        <li>Use <span class="kbd">Ans</span> from the previous result as <em>ans</em> in expressions.</li>
+        <li>Keyboard: Enter = evaluate, Backspace = delete, Esc = clear.</li>
+      </ul>
+      <p>Examples: <code>sin(30)+cos(60)</code>, <code>3!</code>, <code>ln(e)</code>, <code>5^2 + sqrt(49)</code>, <code>50%</code>, <code>abs(-4.2)</code></p>
+ </section>
+
+ <section class="pad" aria-label="keypad">
+    <!--Row 1-->
+    <button onclick="memoryClear()" class="mem">MC</button>
+    <button onclick="memoryRecall()" class="mem">MR</button>
+    <button onclick="memoryAdd()" class="mem">M+</button>
+    <button onclick="memorySubtract()" class="mem">M-</button>
+    <!--Row 2-->
+    <button class="fn" data-key="sin(">sin</button>
+    <button class="fn" data-key="cos(">cos</button>
+    <button class="fn" data-key="tan(">tan</button>
+    <button class="fn" data-key="asin(">asin</button>
+    <button class="fn" data-key="acos(">acos</button>
+    <button class="fn" data-key="atan(">atan</button>
+    <!--Row 3-->
+    <button id="fracBtn">a/b</button>
+    <button class="fn" data-key="sqrt(">√</button>
+    <button class="fn" data-key="cbrt(">3√</button>
+    <button onclick="insertText('y√x')">y√x</button> 
+    <button class="fn" data-key="ln(">ln</button>
+    <button class="fn" data-key="log(">log</button>
+     <!--Row 4-->
+    <button id="powBtn" >x<sup>y</sup></button>
+    <button class="op" id="sqr">x²</button>
+   <button class="op" id="cube">x³</button>
+  <button class="op" id="tenPow">10<sup>x</sup></button>
+  <button class="op" id="ePow">e<sup>x</sup></button>
+ <button class="op" data-key="!">x!</button>
+ <!--Row 5-->
+ <button class="op" data-key="(">(</button>
+  <button class="op" data-key=")">)</button>
+  <button class="op" data-key=",">,</button>
+  <button class="fn" data-key="abs(">|x|</button>
+  <button class="fn" data-key="floor(" title="floor">⌊x⌋</button>
+  <button class="fn" data-key="ceil(" title="ceil">⌈x⌉</button>
+  <!--Row6-->
+  <button data-key="7">7</button>
+  <button data-key="8">8</button>
+  <button data-key="9">9</button>
+  <button class="op" data-key="%">%</button>
+  <button class="danger" id="del">⌫</button>
+  <button class="danger" id="ac">AC</button>
+  <!--Row 7-->
+  <button data-key="4">4</button>
+  <button data-key="5">5</button>
+  <button data-key="6">6</button>
+  <button class="op" data-key="*">×</button>
+  <button class="op" data-key="/">÷</button>
+  <button class="op" id="inv">1/x</button>
+  <!--Row 8-->
+  <button data-key="1">1</button>
+  <button data-key="2">2</button>
+  <button data-key="3">3</button>
+  <button class="op" data-key="+">+</button>
+  <button class="op" data-key="-">−</button>
+  <button class="op" id="neg">±</button>
+  <!--Row 9-->
+  <button data-key="0">0</button>
+  <button data-key=".">.</button>
+  <button class="fn" data-key="pi">π</button>
+  <button class="fn" data-key="e">e</button>
+  <button id="ansBtn">ANS</button>
+  <button class="eq" id="eq">=</button>
+    <div id="result"></div>
+ </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
