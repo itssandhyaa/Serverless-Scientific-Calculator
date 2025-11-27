@@ -107,7 +107,7 @@ To set up and run the application locally, follow these steps:
      2. Table name: **CalculatorHistory** // Write your own table name
      3. Partition key: **id (String)**
      4. Keep other settings as default
-     5 . Click **Create**
+     5. Click **Create**
 
 6. **Setup IAM permissions:**
 
