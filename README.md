@@ -149,10 +149,10 @@ To set up and run the application locally, follow these steps:
      3. Connect your **GitHub Repository**
      4. Choose **branch → Deploy**
      5. Amplify will:
-       - Build frontend
-       - Create S3 bucket
-       - Deploy your site
-       - Provide live URL
+     - Build frontend
+     - Create S3 bucket
+     - Deploy your site
+     - Provide live URL
 
 
 ## 📸 Screenshots
