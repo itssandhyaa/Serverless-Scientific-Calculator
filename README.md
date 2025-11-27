@@ -82,7 +82,7 @@ To set up and run the application locally, follow these steps:
    ```
 3. **Frontend Setup:**
 
- Just open **`index.html`** in the browser to run locally.  
+   Just open **`index.html`** in the browser to run locally.  
 
 4. **Backend Setup (Lambda + API Gateway):**
 
