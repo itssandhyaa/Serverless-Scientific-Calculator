@@ -101,11 +101,11 @@ To set up and run the application locally, follow these steps:
 
 5.  **Create DynamoDB Table:**
 
- 1. Go to **AWS DynamoDB → Create table**
- 2. Table name: **CalculatorHistory** // Write your own table name
- 3. Partition key: **id (String)**
- 4. Keep other settings as default
- 5. Click **Create**
+ 5.1 Go to **AWS DynamoDB → Create table**
+ 5.2 Table name: **CalculatorHistory** // Write your own table name
+ 5.3 Partition key: **id (String)**
+ 5.4 Keep other settings as default
+ 5.5 Click **Create**
 
 6. **Setup IAM permissions:**
 
@@ -137,7 +137,7 @@ To set up and run the application locally, follow these steps:
     ]
   }
   ``` 
-  
+
 7. **Deploying With AWS Amplify**
 
  1. Go to **AWS Amplify Console**
