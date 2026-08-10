@@ -72,7 +72,7 @@ This project demonstrates how to connect a simple UI to a fully serverless backe
 6. The entire UI is hosted and deployed via **AWS Amplify**.
 
 ## Deployment Architecture
-![AWS Architecture](images/architecture.png)
+![AWS Architecture](images/Architecture.png)
 
 ## 🚀 Getting Started
 
@@ -173,13 +173,13 @@ Testing examples and instructions are available in the `Tests` folder.
 ## 📸 Screenshots
 
  ### Scientific Calculator UI
- ![ Scientific Calculator UI](images/calculator-ui.png)
+ ![ Scientific Calculator UI](images/Calculator-ui.png)
 
  ### DynamoDB Calculation History Table
  ![DynamoDB Calculation History Table](images/DynamoDB-history.png)
 
  ### Deployment Architecture
- ![AWS Architecture](images/architecture.png)
+ ![AWS Architecture](images/Architecture.png)
 
 ## 📚 Future Enhancements
 
