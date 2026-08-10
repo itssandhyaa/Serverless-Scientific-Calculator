@@ -21,6 +21,7 @@ This project demonstrates how to connect a simple UI to a fully serverless backe
  - **Responsive Interface:** Designed to work smoothly across desktop and mobile devices with a clean, simple UI.
 
 ## 🛠️ Tech Stack
+
  ### Frontend
  - **HTML5 –** Structure for the calculator interface
  - **CSS3 –** Styling and layout
@@ -41,19 +42,26 @@ This project demonstrates how to connect a simple UI to a fully serverless backe
  - **IAM Roles –** Secure access permissions between Lambda and DynamoDB
 
 ## 📁 Project Structure
+
 ```
 /frontend
-  ├── index.html       # Contains the main FrontEnd page
+  ├── index.html     # Contains the main FrontEnd page
   ├── style.css        
   ├── script.js
 /backend
-  ├── CalculatorFunc.js (or index.mjs)  # Lambda Function or the backend logic
-  ├── DynamoDB table setup
-  ├──APIGateway Connection(RESTAPI)
+  ├──or index.mjs    # Lambda Function or the backend logic
+/Tests
+  ├── TESTME.md      # It contains Different examples of tests and instruction how to TEST it.
+  ├── Events.md
+/images
+  ├──  Architecture.png
+  ├──  Calculator-UI.png
+  ├──  DynamoDB-history.png      
 /Deploy
-  ├── Git & Github         # For code management and CI/CD Pipelines
-  ├── AWS Amplify          #For hosting and Deploying
+  ├── Git & Github    # For code management and CI/CD Pipelines
+  ├── AWS Amplify     #For hosting and Deploying
 ```
+
 ## ⚙️ How It Works (Architecture)
 
 1. **User performs a calculation** on the frontend.
@@ -71,8 +79,9 @@ This project demonstrates how to connect a simple UI to a fully serverless backe
 To set up and run the application locally, follow these steps:
 
 1.  **Clone the repository:**
+
     ```bash
-    https://github.com/itssandhyaa/Serverless-Scientific-Calculator.git
+    git clone https://github.com/itssandhyaa/Serverless-Scientific-Calculator.git
     ```
 
 2. **Navigate to the  directory:**
@@ -80,6 +89,7 @@ To set up and run the application locally, follow these steps:
    ```bash
    cd Serverless-Scientific-Calculator 
    ```
+
 3. **Frontend Setup:**
 
    Just open **`index.html`** in the browser to run locally.  
@@ -109,6 +119,7 @@ To set up and run the application locally, follow these steps:
      4. Keep other settings as default
      5. Click **Create**
 
+
 6. **Setup IAM permissions:**
 
    Your Lambda function needs permission to read and write to DynamoDB.
@@ -119,8 +130,6 @@ To set up and run the application locally, follow these steps:
 
      ```json
      {
-       "type": "inline",
-       "name": "CalcHistoryDynamoDBAccess",
        "Version": "2012-10-17",
        "Statement": 
        [
@@ -154,15 +163,23 @@ To set up and run the application locally, follow these steps:
      - Deploy your site
      - Provide live URL
 
+## 🧪 Testing
+
+Testing examples and instructions are available in the `Tests` folder.
+
+- [Testing Guide](Tests/TESTME.md) – Instructions how to use Events.md file for testing the calculator.
+- [Test Events](Tests/Events.md) – Sample test events used for testing the backend/API.
 
 ## 📸 Screenshots
 
-### UI Preview
-![Calculator UI](images/calculator.png)
+ ### Scientific Calculator UI
+ ![ Scientific Calculator UI](images/calculator-ui.png)
 
-### Deployment Architecture
-![AWS Architecture](images/architecture.png)
+ ### DynamoDB Calculation History Table
+ ![DynamoDB Calculation History Table](images/DynamoDB-history.png)
 
+ ### Deployment Architecture
+ ![AWS Architecture](images/architecture.png)
 
 ## 📚 Future Enhancements
 
@@ -173,9 +190,7 @@ To set up and run the application locally, follow these steps:
 
 ## 🌐 Live Demo
 
-👉  **Live Website:** [Open App](https://your-live-website-url.com)  
-👉 **API Endpoint:** https://abcdefghij.execute-api.ap-south-1.amazonaws.com/prod/calculator
-
+👉  **Live Website:** [Open App](https://staging.d3qje2wioc9f1x.amplifyapp.com/ )
 
 ## 🤝 Contributing
 

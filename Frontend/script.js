@@ -9,13 +9,14 @@ const modeBtn = document.getElementById("modeBtn");
 const modeMenu = document.getElementById("modeMenu");
 
 // --- Your API Gateway endpoint URL (update with your deployed API) ---
-const API_URL = "https://7maxm6n2og.execute-api.us-east-1.amazonaws.com/dev1"; // Use your actual URL here
+const API_URL = "https://7maxm6n2og.execute-api.us-east-1.amazonaws.com/dev1"; // Use your own actual URL here
 
 // --- Application state ---
 const state = {
   angleMode: "DEG",
   ans: 0,
   history: [],
+  memory:0
 };
 
 // --- Status message helper ---
@@ -60,8 +61,6 @@ document.getElementById("cube").addEventListener("click", () => {
   display.innerHTML += "<sup>3</sup>";
   display.focus();
 });
-
-
 document.getElementById("tenPow").addEventListener("click", () => {
   display.innerHTML += "10<sup>x</sup>";
   display.focus();
@@ -80,11 +79,8 @@ document.getElementById("ansBtn").addEventListener("click", () => {
 });
 
 const powBtn = document.getElementById("powBtn");
-
-
 powBtn.addEventListener("click", () => {
   display.focus();
-
   const sel = window.getSelection();
   if (!sel.rangeCount) return;
 
@@ -92,6 +88,7 @@ powBtn.addEventListener("click", () => {
   range.deleteContents();
 
   const sup = document.createElement("sup");
+  
   const box = document.createElement("span");
   box.className = "exp-box";
   box.contentEditable = "true";
@@ -161,9 +158,6 @@ async function runEval() {
       }),
     });
 
-   
-
-
     if (!response.ok) {
       const errorText = await response.text();
       setStatus(`API error: ${response.status} ${errorText}`, false);
@@ -171,9 +165,7 @@ async function runEval() {
       return;
     }
    
-
-
-    const data = await response.json();
+      const data = await response.json();
 
     if (data.status === "OK" && data.result !== undefined) {
       state.ans = data.result;
@@ -182,42 +174,87 @@ async function runEval() {
       state.history.push({ expr: expression, val: data.result });
       histSizeEl.textContent = state.history.length;
       setStatus("OK", true);
-    } else {
+    } 
+    else {
       resultBox.value = "";
       setStatus("Error: " + (data.message || "Unknown error"), false);
     }
-  } catch (err) {
+  }
+  catch (err) {
     setStatus("Error: " + err.message, false);
     resultBox.value = "";
   }
 }
-// === Memory functions === //
+
+
+function getCurrentNumber() {
+  // If there is a calculated result, use it first
+  const result = parseFloat(resultBox.value);
+
+  if (Number.isFinite(result)) {
+    return result;
+  }
+
+  // Otherwise read the current calculator display
+  const current = display.innerText.trim();
+
+  // Accept only a complete number: 8, -8, 8.5, -8.5
+  if (/^-?\d+(\.\d+)?$/.test(current)) {
+    return parseFloat(current);
+  }
+
+  return null;
+}
+
+// === Memory functions ===
+
+
 function memoryClear() {
   state.memory = 0;
-  setStatus("Memory cleared");
+  setStatus("Memory cleared", true);
 }
 
 function memoryRecall() {
-  insertText(state.memory.toString());
-  setStatus("Recalled memory");
+  const current = display.innerText.trim();
+
+  // If display is empty or already contains just a number,
+  // replace it with the recalled memory.
+  if (current === "" || /^-?\d+(\.\d+)?$/.test(current)) {
+    display.innerText = String(state.memory);
+  } 
+  else {
+    // If it's part of an expression such as 5+,
+    // insert memory at the cursor.
+    insertText(String(state.memory));
+  }
+
+  setStatus(`Memory recalled: ${state.memory}`, true);
+  display.focus();
 }
 
 function memoryAdd() {
-  const val = parseFloat(resultBox.value);
-  if (!isNaN(val)) {
-    state.memory += val;
-    setStatus("Memory added");
+  const val = getCurrentNumber();
+
+  if (val === null) {
+    setStatus("Enter a valid number first", false);
+    return;
   }
+
+  state.memory += val;
+  setStatus(`Memory: ${state.memory}`, true);
 }
 
 function memorySubtract() {
-  const val = parseFloat(resultBox.value);
-  if (!isNaN(val)) {
-    state.memory -= val;
-    setStatus("Memory subtracted");
-  }
-}
+  const val = getCurrentNumber();
 
+  if (val === null) {
+    setStatus("Enter a valid number first", false);
+    return;
+  }
+
+  state.memory -= val;
+  setStatus(`Memory: ${state.memory}`, true);
+}
 
 // "=" button triggers runEval()
 eqBtn.addEventListener("click", runEval);
