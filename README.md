@@ -173,7 +173,7 @@ Testing examples and instructions are available in the `Tests` folder.
 ## 📸 Screenshots
 
  ### Scientific Calculator UI
- ![ Scientific Calculator UI](images/Calculator-ui.png)
+ ![ Scientific Calculator UI](images/Calculator-UI.png)
 
  ### DynamoDB Calculation History Table
  ![DynamoDB Calculation History Table](images/DynamoDB-history.png)
